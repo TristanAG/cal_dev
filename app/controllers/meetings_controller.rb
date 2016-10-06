@@ -49,17 +49,28 @@ class MeetingsController < ApplicationController
   # POST /meetings.json
   def create
 
+    #it would seem that if you DON'T set a start_time
+    #you will fuck up everything and destroy the universe
+    #just go into the console and delete it if you do :)
+
+    #working proof of concept!!
+      #just need to craft an algorithm to set all the stuff correctly
 
     @meeting = Meeting.new(meeting_params)
 
-    @meeting.save
+    @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time})
+    @meeting1.save
+
+    @meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
+    @meeting2.save
+
     # respond_to do |format|
-    #   if @meeting.save
-    #     format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
-    #     format.json { render :show, status: :created, location: @meeting }
+    #   if @meeting1.save
+    #     format.html { redirect_to @meeting1, notice: 'Meeting was successfully created.' }
+    #     format.json { render :show, status: :created, location: @meeting1 }
     #   else
     #     format.html { render :new }
-    #     format.json { render json: @meeting.errors, status: :unprocessable_entity }
+    #     format.json { render json: @meeting1.errors, status: :unprocessable_entity }
     #   end
     # end
   end
@@ -96,6 +107,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time)
+      params.require(:meeting).permit(:name, :start_time, :start_time_2)
     end
 end
