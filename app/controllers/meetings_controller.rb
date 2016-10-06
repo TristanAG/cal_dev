@@ -14,6 +14,30 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/new
   def new
+
+    #is this what essentially conjures up the form?
+    #that make sense that this is the GET and the create method is the POST
+    #the get brings up the page, and post actually saves it to the db
+      #the difference is with create is that it is actually calling @meeting.save
+      #that's why there needs to be a new method that gets called when you push the button to create the meeting
+
+
+      #def multiple_occurances
+        #if !has_multiple_occurances
+          #call create method
+        #else
+          #execute algorithm to produce multiple db adds
+      #end
+
+    #when all is said and done, you will instead have a database that has many more
+    #individual entries than just the one 'event' that you added.
+    #if you wanted to then alter the time of a particular occurance, or alter some part of the description
+    #you would locate it on the calendar (or list) view, find the event, and edit it
+
+
+
+
+
     @meeting = Meeting.new
   end
 
@@ -24,8 +48,10 @@ class MeetingsController < ApplicationController
   # POST /meetings
   # POST /meetings.json
   def create
+
     @meeting = Meeting.new(meeting_params)
 
+    
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
