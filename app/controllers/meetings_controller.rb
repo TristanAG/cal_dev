@@ -49,6 +49,7 @@ class MeetingsController < ApplicationController
   # POST /meetings.json
   def create
 
+
     @meeting = Meeting.new(meeting_params)
 
     @meeting.save
