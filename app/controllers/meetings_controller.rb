@@ -58,6 +58,8 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
 
+    
+
     @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time})
     @meeting1.save
 
