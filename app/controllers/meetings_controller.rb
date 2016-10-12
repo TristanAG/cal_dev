@@ -56,25 +56,29 @@ class MeetingsController < ApplicationController
     #working proof of concept!!
       #just need to craft an algorithm to set all the stuff correctly
 
+    #amount = 2
+
     @meeting = Meeting.new(meeting_params)
 
-    
+    #thinking about the array biz...
+    #(1..2).each do |i|
+    #  @meeting = Meeting.new({name: @meeting.name})
 
-    @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time})
-    @meeting1.save
+    #@meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time})
+    #@meeting1.save
 
-    @meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
-    @meeting2.save
+    #@meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
+    #@meeting2.save
 
-    # respond_to do |format|
-    #   if @meeting1.save
-    #     format.html { redirect_to @meeting1, notice: 'Meeting was successfully created.' }
-    #     format.json { render :show, status: :created, location: @meeting1 }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @meeting1.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @meeting.save
+        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
+        format.json { render :show, status: :created, location: @meeting }
+      else
+        format.html { render :new }
+        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /meetings/1
