@@ -16,7 +16,20 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+
+    <div class="field">
+      <%= f.label :start_time %>
+      <%= f.datetime_select :start_time %>
+    </div>
+
+    <div class="field">
+      <%= f.label :start_time_2 %>
+      <%= f.datetime_select :start_time_2 %>
+    </div>
+
+  
+
+  <!-- <div class="field">
     <%= f.label :start_time %>
     <%= f.datetime_select :start_time %>
   </div>
@@ -24,7 +37,7 @@
   <div class="field">
     <%= f.label :start_time_2 %>
     <%= f.datetime_select :start_time_2 %>
-  </div>
+  </div> -->
 
   <div class="actions">
     <%= f.submit %>
