@@ -5,8 +5,7 @@
 <%= month_calendar events: @meetings do |date, meetings| %>
 
   <div style="width:60px">
-  <span class="day"><%= date.day %></span>
-
+    <span class="day"><%= date.day %></span>
   </div>
 
   <% meetings.each do |meeting| %>
@@ -14,6 +13,7 @@
       <%= link_to meeting.name, meeting %>
     </div>
   <% end %>
+  
 <% end %>
 
 <%= link_to 'New Meeting', new_meeting_path %>
