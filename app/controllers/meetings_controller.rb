@@ -27,21 +27,27 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
 
-    # instance_number = 3
+    meeting_time = [
+      @meeting.start_time_1,
+      @meeting.start_time_2,
+      @meeting.start_time_3
+    ]
+    
+    instance_number = 3
+
+    instance_number.times do |i|
+      @meeting = Meeting.new({name: @meeting.name, start_time: meeting_time[i]})
+      @meeting.save
+    end
+
+    # @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_1})
+    # @meeting1.save
     #
-    # instance_number.times.do |i|
-    #   #save
-    #   @meeting = Meeting.new({name: @meeting.name, start_time: @meeting.})
-    # end
-
-    @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_1})
-    @meeting1.save
-
-    @meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
-    @meeting2.save
-
-    @meeting3 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_3})
-    @meeting3.save
+    # @meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
+    # @meeting2.save
+    #
+    # @meeting3 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_3})
+    # @meeting3.save
 
 
 
