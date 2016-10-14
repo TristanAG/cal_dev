@@ -27,9 +27,12 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
 
-    #thinking about the array biz...
-    #(1..2).each do |i|
-    #  @meeting = Meeting.new({name: @meeting.name})
+    # instance_number = 3
+    #
+    # instance_number.times.do |i|
+    #   #save
+    #   @meeting = Meeting.new({name: @meeting.name, start_time: @meeting.})
+    # end
 
     @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time})
     @meeting1.save
