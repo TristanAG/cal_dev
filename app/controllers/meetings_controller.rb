@@ -34,7 +34,7 @@ class MeetingsController < ApplicationController
     #   @meeting = Meeting.new({name: @meeting.name, start_time: @meeting.})
     # end
 
-    @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time})
+    @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_1})
     @meeting1.save
 
     @meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
@@ -88,6 +88,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :start_time_2, :start_time_3)
+      params.require(:meeting).permit(:name, :start_time_1, :start_time_2, :start_time_3)
     end
 end
