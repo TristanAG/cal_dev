@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014002415) do
+ActiveRecord::Schema.define(version: 20161014065643) do
 
   create_table "meetings", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.datetime "start_time_2"
     t.datetime "start_time_3"
     t.datetime "start_time_1"
     t.datetime "start_time"
+    t.integer  "meeting_instances"
   end
 
 end

@@ -32,10 +32,10 @@ class MeetingsController < ApplicationController
       @meeting.start_time_2,
       @meeting.start_time_3
     ]
-    
-    instance_number = 3
 
-    instance_number.times do |i|
+    #meeting_instances = 3
+
+    @meeting.meeting_instances.times do |i|
       @meeting = Meeting.new({name: @meeting.name, start_time: meeting_time[i]})
       @meeting.save
     end
@@ -94,6 +94,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time_1, :start_time_2, :start_time_3)
+      params.require(:meeting).permit(:name, :start_time_1, :start_time_2, :start_time_3, :meeting_instances)
     end
 end
