@@ -1,43 +1,17 @@
 <script type="text/javascript">
+  $( document ).ready( function(){
+    //init
+    var num = 1;
+    $( '#meeting_meeting_instances' ).val(num);
+    $( '#2, #3' ).hide();
 
-var num = 1;
-
-$( document ).ready( function(){
-  $('#2').hide();
-  $('#3').hide();
-  $('#new-event').click( function(){
-    num++;
-    $( '#' + num.toString() ).show();
-    console.log(num);
+    //increment everything for proper save amount in db
+    $( '#new-event' ).click( function(){
+      num++;
+      $( '#' + num.toString() ).show();
+      $( '#meeting_meeting_instances' ).val(num);
+    });
   });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-//var clicks = 0; $("#like").click(function(){ clicks++; $('.figure').html(clicks);});
-
-// $(document).ready(function(){
-//   $('#2').hide();
-//   $('#3').hide();
-//
-//       //var counter = $('#TextBox').val();
-//       $('#AddButton').click( function() {
-//           var counter = $('#TextBox').val();
-//           counter++ ;
-//           $('#TextBox').val(counter);
-//             $('#2').show();
-//   });
-// });
-
 </script>
 
 <%= form_for(meeting) do |f| %>
@@ -58,7 +32,7 @@ $( document ).ready( function(){
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div style="visibility:hidden">
     <%= f.label :meeting_instances %>
     <%= f.text_field :meeting_instances %>
   </div>
@@ -69,6 +43,7 @@ $( document ).ready( function(){
   </div>
 
   <div id="new-event">new event</div>
+
 
   <!-- <div class="field">
     <input type="text" name="TextBox" id="TextBox" value="0" />

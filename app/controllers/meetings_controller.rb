@@ -33,23 +33,10 @@ class MeetingsController < ApplicationController
       @meeting.start_time_3
     ]
 
-    #meeting_instances = 3
-
     @meeting.meeting_instances.times do |i|
       @meeting = Meeting.new({name: @meeting.name, start_time: meeting_time[i]})
       @meeting.save
     end
-
-    # @meeting1 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_1})
-    # @meeting1.save
-    #
-    # @meeting2 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_2})
-    # @meeting2.save
-    #
-    # @meeting3 = Meeting.new({name: @meeting.name, start_time: @meeting.start_time_3})
-    # @meeting3.save
-
-
 
     # respond_to do |format|
     #   if @meeting.save
