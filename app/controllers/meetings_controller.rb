@@ -38,15 +38,15 @@ class MeetingsController < ApplicationController
       @meeting.save
     end
 
-    # respond_to do |format|
-    #   if @meeting.save
-    #     format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
-    #     format.json { render :show, status: :created, location: @meeting }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @meeting.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @meeting.save
+        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
+        format.json { render :show, status: :created, location: @meeting }
+      else
+        format.html { render :new }
+        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /meetings/1
@@ -84,6 +84,6 @@ class MeetingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time_1, :start_time_2, :start_time_3, :meeting_instances)
+      params.require(:meeting).permit(:name, :start_time, :start_time_1, :start_time_2, :start_time_3, :meeting_instances)
     end
 end
