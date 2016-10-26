@@ -10,6 +10,7 @@
       num++;
       $( '#' + num.toString() ).show();
       $( '#meeting_meeting_instances' ).val(num);
+      console.log(num);
     });
   });
 </script>
@@ -42,23 +43,22 @@
     <%= f.datetime_select :start_time_1 %>
   </div>
 
-  <div id="new-event">new event</div>
+  <% if current_page?(controller: 'meetings', action: 'new') %>
+    <div id="new-event">new event</div>
+  <% end %>
 
 
-  <!-- <div class="field">
-    <input type="text" name="TextBox" id="TextBox" value="0" />
-    <input type="Button" id='AddButton' value="+" />
-  </div> -->
 
-  <div class="field" id="2">
-    <%= f.label :start_time_2 %>
-    <%= f.datetime_select :start_time_2 %>
-  </div>
 
-  <div class="field" id="3">
-    <%= f.label :start_time_3 %>
-    <%= f.datetime_select :start_time_3 %>
-  </div>
+    <div class="field" id="2">
+      <%= f.label :start_time_2 %>
+      <%= f.datetime_select :start_time_2 %>
+    </div>
+
+    <div class="field" id="3">
+      <%= f.label :start_time_3 %>
+      <%= f.datetime_select :start_time_3 %>
+    </div>
 
 
 
