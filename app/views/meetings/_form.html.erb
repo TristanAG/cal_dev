@@ -1,32 +1,31 @@
 <script type="text/javascript">
-  $( document ).ready( function(){
-    var num = 1;
+  $( document ).ready( function(num){
+
     init();
+    plusOrMinusButtons();
 
-    //increment everything for proper save amount in db
-    $( '#new-event' ).click( function( e ){
-      e.preventDefault()
-      if (num >= 1) {$( '#hide-event' ).show();}
-      num++;
-      $( '#' + num.toString() ).show();
-      $( '#meeting_meeting_instances' ).val(num);
-    });
+    function plusOrMinusButtons(){
+      $( '#new-event' ).click( function( e ){ e.preventDefault()
+        if (num >= 1) { $( '#hide-event' ).show(); }
+        num++;
+        setAmount();
+      });
 
-    $( '#hide-event' ).click( function( e ){
-      e.preventDefault()
-      $( '#' + num.toString() ).hide();
-      $( '#meeting_meeting_instances' ).val(num);
-      num--;
-
-      if(num == 1){ $( '#hide-event' ).hide(); }
-    });
-
+      $( '#hide-event' ).click( function( e ){ e.preventDefault()
+        setAmount();
+        num--;
+        if(num == 1){ $( '#hide-event' ).hide(); }
+      });
+    }
     function init(){
-      //init
-
+      num = 1;
       $( '#meeting_meeting_instances' ).val(num);
       $( '#2, #3' ).hide();
       $( '#hide-event' ).hide();
+    }
+    function setAmount(){
+      $( '#' + num.toString() ).show();
+      $( '#meeting_meeting_instances' ).val(num);
     }
   });
 </script>
