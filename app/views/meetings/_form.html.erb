@@ -15,34 +15,29 @@
     function plusOrMinusButtons(){
       $( '#add-button' ).click( function( e ){
         e.preventDefault();
-        if (num >= 1) {
-          $( '#subtract-button' ).show();
-        }
+        if (num >= 1) {$( '#subtract-button' ).show();}
         num++;
-        setAmount();
-        console.log(num);
+        $( '#' + num.toString() ).show();
+        $( '#meeting_meeting_instances' ).val(num);
+
       });
 
       $( '#subtract-button' ).click( function( e ){
         e.preventDefault();
 
-
-
+        //hide instance
         $( '#' + num.toString() ).hide();
-        //setAmount();
+
         num--;
         if(num == 1){
           $( '#subtract-button' ).hide();
         }
-        console.log(num)
-
-
+        $( '#meeting_meeting_instances' ).val(num);
       });
     }
 
     function setAmount(){
-      $( '#' + num.toString() ).show();
-      $( '#meeting_meeting_instances' ).val(num);
+
     }
 
     console.log(num);
@@ -109,7 +104,7 @@
       <%= f.submit %>
     </div>
 
-    <div class="hidden-element">
+    <div class="hidden-element" >
       <%= f.label :meeting_instances %>
       <%= f.text_field :meeting_instances %>
     </div>
