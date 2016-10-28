@@ -1,33 +1,48 @@
 <script type="text/javascript">
   $( document ).ready( function(num){
-    //init
-    num = 1;
-    $( '#meeting_meeting_instances' ).val(num);
-    $( '#2, #3' ).hide();
-    $( '#subtract-button' ).hide();
+    init()
 
     $( '#add-button' ).click( function( e ){
-      e.preventDefault();
-      if (num >= 1) {$( '#subtract-button' ).show();}
-      num++;
-      $( '#' + num.toString() ).show();
-      $( '#meeting_meeting_instances' ).val(num);
-
-      //3 is a magic num now because i know how many instances are possible
-      //need a way of determining the num on the fly
-      if(num == 3){ $( '#add-button' ).hide();}
-    });
+      e.preventDefault()
+      num++
+      updateNum()
+      addEvent()
+      toggleButtons()
+    })
 
     $( '#subtract-button' ).click( function( e ){
-      e.preventDefault();
-      $( '#' + num.toString() ).hide();
-      //restore add button
-      if(num == 3){ $( '#add-button' ).show();}
-      num--;
-      if(num == 1){ $( '#subtract-button' ).hide(); }
-      $( '#meeting_meeting_instances' ).val(num);
-    });
-  });
+      e.preventDefault()
+      removeEvent()
+      num--
+      updateNum()
+      toggleButtons()
+    })
+
+    function init(){
+      num = 1
+      $( '#meeting_meeting_instances' ).val(num)
+      $( '#2, #3' ).hide()
+      $( '#subtract-button' ).hide()
+    }
+    function toggleButtons(){
+      switch(num) {
+        case 1:
+          $( '#add-button' ).show()
+          $( '#subtract-button' ).hide()
+            break;
+        case 3:
+          $( '#add-button' ).hide()
+          $( '#subtract-button' ).show()
+            break;
+        default:
+          $( '#add-button' ).show()
+          $( '#subtract-button' ).show()
+      }
+    }
+    function addEvent(){ $( '#' + num.toString() ).show() }
+    function removeEvent(){ $( '#' + num.toString() ).hide() }
+    function updateNum(){ $( '#meeting_meeting_instances' ).val(num) }
+  })
 </script>
 
 <div class="row">
